@@ -1,0 +1,5 @@
+Backend routes
+
+- /createbook => create a book with book name and code (generated at backend) and than verify, if correct (send user in wordbook) save it on our db model else error
+- /openbook => enter code (open book) if code correct (verify from db) send user to book else send error
+- /book => in a book  (have a word, meaning and usecase per day)  share button to share your book
