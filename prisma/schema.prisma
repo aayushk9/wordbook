@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,17 +8,19 @@ datasource db {
 }
 
 model User {
-  id           String @id @default(uuid())
-  userName     String @unique
-  joinCode     String @unique
-  wordBook     wordBook[]
+  id               String @id @default(uuid())
+  userName         String @unique
+  joinCode         String @unique  
+  receivedWords    SentWord[]
 }
 
-model wordBook {
-   id            String @id @default(cuid())
-   word          String @unique
-   wordMeaning   String
-   wordUseCase   String
-   userId        String
-   user          User  @relation(fields: [userId], references: [id])
+model SentWord {
+  id        String   @id @default(cuid())
+  userId    String
+  word      String   
+  dateSent  DateTime
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, dateSent]) 
+  @@unique([userId, word])    
 }
