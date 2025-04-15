@@ -1,5 +1,23 @@
 Backend routes
 
-- /createbook => create a book with book name and code (generated at backend) and than verify, if correct (send user in wordbook) save it on our db model else error
+- /createbook => create a book with book name, code gets generaterd and save details in db
+- /verifycode => code verification
 - /openbook => enter code (open book) if code correct (verify from db) send user to book else send error
 - /book => in a book  (have a word, meaning and usecase per day)  share button to share your book
+
+Models
+
+ 1. User model (saves user id, user name code and has a relation with word model)
+ 2. Word Book model (saves word_id, word name, word meaning, word usecase and relation to user model)
+
+ Logic 
+
+- when user creates book they get thir first name from file or ai, whereas existing or words which came
+    already from file will be rendered in book from db
+
+ - Code verification (when book is created): when we genrated a random code (nanoid) we verify it with what user typed 
+   if(enteredCide == generatedCode) correct else wrong
+ - Code verification (when already book exists): if(entered code == codeFromDb) correct else wrong
+
+ - /book Logic -> render past days word, etc from db and check if user has opend book for the first time in this day 
+                  if yes fetch word from outside else show existing ones from db
