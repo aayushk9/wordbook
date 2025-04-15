@@ -21,3 +21,17 @@ Models
 
  - /book Logic -> render past days word, etc from db and check if user has opend book for the first time in this day 
                   if yes fetch word from outside else show existing ones from db
+
+- frontend logic:  
+
+unauthenticated pages: 
+
+createbook api expects an username as input and gives us and generated code (saved code and username in db)
+verifycode api expects code (generated code) as a input and if correct redirects to book
+openbook api expects username and code as input and if correct redirects to book 
+
+authenticated page:
+
+book api expects a token (jwt)
+
+
