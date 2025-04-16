@@ -22,8 +22,10 @@ export function Log() {
             if (res.ok) {
                 localStorage.setItem("token", data.token);
                 router.push("/book")
-            } else {
+            } else if(res.status == 400){
                 alert("Wrong credentials")
+            } else {
+                alert("something went wrong")
             }
         } catch (error) {
             console.error(error)
