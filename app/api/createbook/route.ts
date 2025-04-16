@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { z } from 'zod'
 
 const parser = z.object({
-    bookName: z.string().min(1)
+    bookName: z.string().min(2)
 })
 
 export async function POST(req: NextRequest) {
@@ -34,6 +34,8 @@ export async function POST(req: NextRequest) {
         if(existingBook) {
             return NextResponse.json({
                 message: "book name already exists, please chossse other name"
+            }, {
+                status: 409
             })
         }
 
@@ -47,7 +49,7 @@ export async function POST(req: NextRequest) {
       
         return NextResponse.json({
                 message: "book created successfully",
-                generatedCOde: generatedCode
+                generatedCode: generatedCode
             })
 
     } catch (error) {

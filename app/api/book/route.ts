@@ -32,7 +32,7 @@ export async function GET(req: NextRequest) {
   const endOfToday = new Date();
   endOfToday.setHours(23, 59, 59, 999);
 
-  // checking with if any word presents for today
+  // checking if word is been sent already for today
   let todayWord = await prismaClient.sentWord.findFirst({
     where: {
       userId: book.bookId,
@@ -97,6 +97,7 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({
     // render words here
     today: {
+      date: todayWord.dateSent,
       word: todayWord.word,
       meaning: todayWordDetails?.meaning,
       usecase: todayWordDetails?.useCase
