@@ -8,7 +8,7 @@ export default function OpenBookPage() {
           Open your existing book
         </h2>
         <p className="text-sm text-gray-400 mb-6 text-center">
-          Enter your book name and join code to access your word book
+          Enter your book name and code to access your word book
         </p>
         <Log />
       </div>
