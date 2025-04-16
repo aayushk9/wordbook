@@ -33,6 +33,8 @@ export async function POST(req: NextRequest) {
         } else {
             return NextResponse.json({
                 message: "wrong code"
+            }, {
+                status: 400
             })
         }
     } catch (error) {
